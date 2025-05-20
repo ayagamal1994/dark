@@ -1,7 +1,7 @@
 :root {
     --main-color: #9ab8f0;
     --second-color: #a07bd4;
-    --background-color: #4a4d4c;
+    --background-color: #242525;
     --text-color: #bfbfbf;
 }
 html {
@@ -14,6 +14,7 @@ html {
 }
 body {
     font-family: "Poppins", sans-serif;
+    background-color: var(--background-color);
 }
 p {
     color: var(--text-color)
@@ -207,3 +208,84 @@ p {
         padding: 10px
     }
   }
+
+
+
+  /* HOME */
+  .post-form {
+    margin-top: 50px
+  }
+  .post-form form{
+    background: linear-gradient(to left, var(--main-color), var(--second-color));
+    padding: 50px 50px 150px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  .post-form__input {
+    width: 100%;
+    height: 100px;
+    padding: 20px;
+    border-radius: 5px;
+    border: none
+  }
+  .post-form__input:focus {
+    outline: none;
+  }
+  .post-form__button {
+    padding: 10px 20px;
+    text-transform: capitalize;
+    color: var(--second-color);
+    background-color: #fff;
+    border: none;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    justify-self: flex-end;
+    align-self: flex-end;
+    width: fit-content;
+    font-weight: bold;
+  }
+
+
+  /* posts */
+  .posts .row{
+    width: 90%;
+    margin: auto;
+    padding: 50px;
+    position: relative;
+    z-index: 1;
+    margin-top: -100px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 100px;
+  }
+
+  .posts__item {
+    border: 1px solid var(--main-color);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px
+  }
+  .posts__item__header, .posts__item__header div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    color: var(--second-color);
+  }
+  .posts__item__header svg {
+    font-size: 20px
+  }
+  .posts__item__text {
+    margin: 20px 0;
+    line-height: 1.7
+  }
+.posts__item__image {
+    height: 300px;
+    text-align: center;
+}
+.posts__item__image img{
+    height: 100%
+}
