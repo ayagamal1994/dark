@@ -1,5 +1,134 @@
 {
     "users": [
         {"id":1, "username": "aya", "password":123456}
-    ]
+    ],
+
+
+  "posts": [
+    {
+      "id": 1,
+      "publisher": "Aya Gamal",
+      "post": "JavaScript is a versatile language used in both front-end and back-end development. React makes building user interfaces much easier by using reusable components. Async/await simplifies writing asynchronous code compared to traditional promises. CSS Grid and Flexbox are essential tools for responsive web design. Using version control systems like Git helps manage code history and collaboration. The Document Object Model (DOM) allows JavaScript to interact with and modify web pages dynamically. Writing clean and maintainable code improves collaboration and reduces bugs. Web APIs enable communication between applications over the internet. Debugging tools like Chrome DevTools are crucial for diagnosing issues in web applications. Understanding scope and closures in JavaScript is fundamental for mastering the language. Frameworks like Next.js and Nuxt.js provide server-side rendering and routing out of the box. Modern development often involves build tools like Webpack, Vite, or Parcel. Unit testing ensures that individual parts of the application work as expected. Continuous integration and deployment streamline the software release process. Accessibility in web design ensures applications are usable by everyone, including those with disabilities. Web security best practices like input validation and HTTPS protect users and data. The virtual DOM in libraries like React improves performance by minimizing actual DOM updates. State management tools like Redux or Context API are useful in larger React applications. Understanding the event loop is key to mastering asynchronous behavior in JavaScript. Progressive Web Apps (PWAs) provide offline capabilities and native-like experiences in browsers.",
+      "image": "images/post1.jpg",
+      "likes": 87,
+      "comments": [
+        "Great explanation!",
+        "Very informative.",
+        "Thanks for sharing!"
+      ]
+    },
+    {
+      "id": 2,
+      "publisher": "Omar Khaled",
+      "post": "Understanding scope and closures in JavaScript is fundamental for mastering the language. State management tools like Redux or Context API are useful in larger React applications. Debugging tools like Chrome DevTools are crucial for diagnosing issues in web applications. Writing clean and maintainable code improves collaboration and reduces bugs. Web APIs enable communication between applications over the internet. Accessibility in web design ensures applications are usable by everyone, including those with disabilities. Frameworks like Next.js and Nuxt.js provide server-side rendering and routing out of the box. Using version control systems like Git helps manage code history and collaboration. The virtual DOM in libraries like React improves performance by minimizing actual DOM updates. Async/await simplifies writing asynchronous code compared to traditional promises. Continuous integration and deployment streamline the software release process. Modern development often involves build tools like Webpack, Vite, or Parcel. The Document Object Model (DOM) allows JavaScript to interact with and modify web pages dynamically. JavaScript is a versatile language used in both front-end and back-end development. Unit testing ensures that individual parts of the application work as expected. Progressive Web Apps (PWAs) provide offline capabilities and native-like experiences in browsers. CSS Grid and Flexbox are essential tools for responsive web design. The event loop is key to mastering asynchronous behavior in JavaScript. Web security best practices like input validation and HTTPS protect users and data.",
+      "image": "images/post2.jpg",
+      "likes": 45,
+      "comments": [
+        "Clear and to the point.",
+        "Helpful for beginners.",
+        "Loved this post!",
+        "Amazing content!",
+        "Keep it up!"
+      ]
+    },
+    {
+      "id": 3,
+      "publisher": "Sara Adel",
+      "post": "The Document Object Model (DOM) allows JavaScript to interact with and modify web pages dynamically. JavaScript is a versatile language used in both front-end and back-end development. Progressive Web Apps (PWAs) provide offline capabilities and native-like experiences in browsers. Accessibility in web design ensures applications are usable by everyone, including those with disabilities. Modern development often involves build tools like Webpack, Vite, or Parcel. Debugging tools like Chrome DevTools are crucial for diagnosing issues in web applications. Unit testing ensures that individual parts of the application work as expected. Writing clean and maintainable code improves collaboration and reduces bugs. Using version control systems like Git helps manage code history and collaboration. Frameworks like Next.js and Nuxt.js provide server-side rendering and routing out of the box. State management tools like Redux or Context API are useful in larger React applications. React makes building user interfaces much easier by using reusable components. Understanding scope and closures in JavaScript is fundamental for mastering the language. CSS Grid and Flexbox are essential tools for responsive web design. The virtual DOM in libraries like React improves performance by minimizing actual DOM updates. Async/await simplifies writing asynchronous code compared to traditional promises. Continuous integration and deployment streamline the software release process. Web APIs enable communication between applications over the internet.",
+      "image": "images/post3.png",
+      "likes": 59,
+      "comments": [
+        "Helpful for beginners.",
+        "Loved this post!",
+        "Amazing content!"
+      ]
+    },
+    {
+      "id": 4,
+      "publisher": "Youssef Hany",
+      "post": "Accessibility in web design ensures applications are usable by everyone, including those with disabilities. Async/await simplifies writing asynchronous code compared to traditional promises. The DOM is how JavaScript interacts with the page. CSS Grid and Flexbox are essential tools for responsive web design. Frameworks like Next.js and Nuxt.js provide server-side rendering and routing out of the box. Debugging tools like Chrome DevTools are crucial for diagnosing issues in web applications. Writing clean and maintainable code improves collaboration and reduces bugs. Web APIs enable communication between applications over the internet. Using version control systems like Git helps manage code history and collaboration. State management tools like Redux or Context API are useful in larger React applications. Unit testing ensures that individual parts of the application work as expected. JavaScript is a versatile language used in both front-end and back-end development. Progressive Web Apps (PWAs) provide offline capabilities and native-like experiences in browsers. The virtual DOM in libraries like React improves performance by minimizing actual DOM updates. Continuous integration and deployment streamline the software release process. Understanding scope and closures in JavaScript is fundamental for mastering the language.",
+      "image": "images/post4.png",
+      "likes": 73,
+      "comments": [
+        "Thanks for sharing!",
+        "Great explanation!",
+        "Very informative."
+      ]
+    },
+    {
+      "id": 5,
+      "publisher": "Nour Hassan",
+      "post": "APIs are how software talks to other software. Learn how to send GET and POST requests properly. Debugging tools like Chrome DevTools are crucial for diagnosing issues in web applications. Using version control systems like Git helps manage code history and collaboration. Accessibility in web design ensures applications are usable by everyone, including those with disabilities. JavaScript is a versatile language used in both front-end and back-end development. React makes building user interfaces much easier by using reusable components. Async/await simplifies writing asynchronous code compared to traditional promises. Progressive Web Apps (PWAs) provide offline capabilities and native-like experiences in browsers. CSS Grid and Flexbox are essential tools for responsive web design. Writing clean and maintainable code improves collaboration and reduces bugs. State management tools like Redux or Context API are useful in larger React applications. Unit testing ensures that individual parts of the application work as expected. The Document Object Model (DOM) allows JavaScript to interact with and modify web pages dynamically. Web APIs enable communication between applications over the internet. Frameworks like Next.js and Nuxt.js provide server-side rendering and routing out of the box. Continuous integration and deployment streamline the software release process.",
+      "image": "images/post5.png",
+      "likes": 65,
+      "comments": [
+        "Helpful for beginners.",
+        "Clear and to the point."
+      ]
+    },
+    {
+      "id": 6,
+      "publisher": "Ali Tarek",
+      "post": "Using Git properly saves you from headaches. Commit often, write clear messages, and push regularly. React makes building user interfaces much easier by using reusable components. Async/await simplifies writing asynchronous code compared to traditional promises. The Document Object Model (DOM) allows JavaScript to interact with and modify web pages dynamically. CSS Grid and Flexbox are essential tools for responsive web design. Debugging tools like Chrome DevTools are crucial for diagnosing issues in web applications. State management tools like Redux or Context API are useful in larger React applications. Writing clean and maintainable code improves collaboration and reduces bugs. Unit testing ensures that individual parts of the application work as expected. Web APIs enable communication between applications over the internet. Progressive Web Apps (PWAs) provide offline capabilities and native-like experiences in browsers. Frameworks like Next.js and Nuxt.js provide server-side rendering and routing out of the box. Understanding scope and closures in JavaScript is fundamental for mastering the language. Continuous integration and deployment streamline the software release process.",
+      "image": "images/post6.png",
+      "likes": 48,
+      "comments": [
+        "Amazing content!",
+        "Thanks for sharing!",
+        "Clear and to the point.",
+        "Keep it up!"
+      ]
+    },
+    {
+      "id": 7,
+      "publisher": "Layla Mahmoud",
+      "post": "CSS Grid and Flexbox are powerful layout systems for building responsive UIs. Understanding scope and closures in JavaScript is fundamental for mastering the language. Writing clean and maintainable code improves collaboration and reduces bugs. React makes building user interfaces much easier by using reusable components. Debugging tools like Chrome DevTools are crucial for diagnosing issues in web applications. State management tools like Redux or Context API are useful in larger React applications. Unit testing ensures that individual parts of the application work as expected. Accessibility in web design ensures applications are usable by everyone, including those with disabilities. JavaScript is a versatile language used in both front-end and back-end development. The virtual DOM in libraries like React improves performance by minimizing actual DOM updates. Progressive Web Apps (PWAs) provide offline capabilities and native-like experiences in browsers. Frameworks like Next.js and Nuxt.js provide server-side rendering and routing out of the box.",
+      "image": "images/post7.png",
+      "likes": 90,
+      "comments": [
+        "Great explanation!",
+        "Very informative.",
+        "Loved this post!",
+        "Helpful for beginners.",
+        "Thanks for sharing!"
+      ]
+    },
+    {
+      "id": 8,
+      "publisher": "Hassan Saeed",
+      "post": "Clean code is not about clever tricks, it’s about readable, maintainable structure. Debugging tools like Chrome DevTools are crucial for diagnosing issues in web applications. JavaScript is a versatile language used in both front-end and back-end development. Async/await simplifies writing asynchronous code compared to traditional promises. React makes building user interfaces much easier by using reusable components. The Document Object Model (DOM) allows JavaScript to interact with and modify web pages dynamically. Unit testing ensures that individual parts of the application work as expected. Web APIs enable communication between applications over the internet. CSS Grid and Flexbox are essential tools for responsive web design. Progressive Web Apps (PWAs) provide offline capabilities and native-like experiences in browsers. State management tools like Redux or Context API are useful in larger React applications. Frameworks like Next.js and Nuxt.js provide server-side rendering and routing out of the box. Continuous integration and deployment streamline the software release process.",
+      "image": "images/post8.webp",
+      "likes": 53,
+      "comments": [
+        "Thanks for sharing!",
+        "Great explanation!"
+      ]
+    },
+    {
+      "id": 9,
+      "publisher": "Rana Fathy",
+      "post": "Asynchronous JavaScript is key to non-blocking apps. Master callbacks, promises, and async/await. State management tools like Redux or Context API are useful in larger React applications. Debugging tools like Chrome DevTools are crucial for diagnosing issues in web applications. Unit testing ensures that individual parts of the application work as expected. Writing clean and maintainable code improves collaboration and reduces bugs. Frameworks like Next.js and Nuxt.js provide server-side rendering and routing out of the box. Web APIs enable communication between applications over the internet. JavaScript is a versatile language used in both front-end and back-end development. Progressive Web Apps (PWAs) provide offline capabilities and native-like experiences in browsers. CSS Grid and Flexbox are essential tools for responsive web design. The Document Object Model (DOM) allows JavaScript to interact with and modify web pages dynamically. Continuous integration and deployment streamline the software release process.",
+      "image": "images/post9.png",
+      "likes": 77,
+      "comments": [
+        "Amazing content!",
+        "Keep it up!",
+        "Clear and to the point."
+      ]
+    },
+    {
+      "id": 10,
+      "publisher": "Ziad Mostafa",
+      "post": "State management tools like Redux or Context API are useful in larger React applications. Async/await simplifies writing asynchronous code compared to traditional promises. Debugging tools like Chrome DevTools are crucial for diagnosing issues in web applications. JavaScript is a versatile language used in both front-end and back-end development. Writing clean and maintainable code improves collaboration and reduces bugs. Progressive Web Apps (PWAs) provide offline capabilities and native-like experiences in browsers. Frameworks like Next.js and Nuxt.js provide server-side rendering and routing out of the box. The Document Object Model (DOM) allows JavaScript to interact with and modify web pages dynamically. Unit testing ensures that individual parts of the application work as expected. Web APIs enable communication between applications over the internet. Continuous integration and deployment streamline the software release process. CSS Grid and Flexbox are essential tools for responsive web design. Understanding scope and closures in JavaScript is fundamental for mastering the language.",
+      "image": "images/post10.webp",
+      "likes": 69,
+      "comments": [
+        "Very informative.",
+        "Helpful for beginners.",
+        "Loved this post!",
+        "Thanks for sharing!"
+      ]
+    }
+  ]
+  
 }
