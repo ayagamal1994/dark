@@ -1,3 +1,9 @@
+let postButton = document.querySelector(".post-form__button");
+let postInput = document.querySelector(".post-form__input");
+let postImageFile = document.querySelector("#post-image");
+
+let userInfo = [];
+let lastPostId = 0;
 //create post from json server data
 async function createPost(){
   let postsElement = document.querySelector(".posts .row");
@@ -6,10 +12,11 @@ async function createPost(){
   let response = await fetch(`http://localhost:3000/posts`);
   let posts = await response.json();
   console.log(posts);
-
+  lastPostId = posts.length;
   if(posts.length > 0){
     //postsItem
     posts.map((post)=> {
+
         let postsItem = document.createElement("div");
         postsItem.classList.add("posts__item");
         postsElement.append(postsItem);
@@ -82,7 +89,49 @@ createPost();
 
 // addPost function
 async function addPost(e){
+    /*function readFileAsDataURL(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
+}*/
     e.preventDefault();
 
-    let response = await fetch("http://localhost:3000/posts")
+    // image post url
+    const postFile = postImageFile.files;
+    console.log(postFile)
+    let imageUrl = null;
+    const reader = new FileReader();
+    reader.onload = function () {
+            imageUrl = reader.result;
+    }
+    reader.readAsDataURL(postFile);
+    
+    //fetch user
+    let userResponse = await fetch("http://localhost:3000/users");
+    let userInfo = await userResponse.json();
+    console.log(userInfo)
+    let userPublisher = userInfo[0].username;
+
+    //fetch posts
+    let response = await fetch("http://localhost:3000/posts", {
+        "method": "POST",
+        "body":JSON.stringify({
+            "id": ++lastPostId,
+            "publisher": userPublisher,
+            "post": postInput.value,
+            "image": imageUrl,
+            "likes": 0,
+            "comments": []
+
+        })
+    })
+
+    const result = await response.json();
+    console.log(result);
 }
+postButton.addEventListener("click", addPost)
