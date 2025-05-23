@@ -320,8 +320,20 @@ img {
     margin-left: 10px;
     cursor: pointer
 }
-.posts__item__bottom .post-comments {
+.post-comments-number {
     cursor: pointer
+}
+.post-comments {
+    margin-top: 20px
+}
+.post-comments .comment {
+    border-top: 1px solid var(--text-color);
+    padding: 10px 0
+}
+/* posts details */
+
+.one-post{
+    margin: 50px 0;
 }
 
 /* Home Responsiveness */

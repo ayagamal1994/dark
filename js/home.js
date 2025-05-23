@@ -4,8 +4,9 @@ let postImageFile = document.querySelector("#post-image");
 
 let userInfo = [];
 let lastPostId = 0;
-//create post from json server data
-async function createPost(){
+
+//display posts from json server data
+async function displayPosts(postsData = null){
   let postsElement = document.querySelector(".posts .row");
 
   //GET posts data
@@ -49,10 +50,17 @@ async function createPost(){
         postsItem.append(postsItemText);
 
         //readMore button
+        
         let readMoreButton = document.createElement("button");
         readMoreButton.classList.add("read-more");
         readMoreButton.textContent = `read more`;
+
+        readMoreButton.addEventListener("click", ()=>{
+          localStorage.setItem("onePost", JSON.stringify(post));
+          window.open(`post-details.html?id=${post.id}`)
+        })
         postsItem.append(readMoreButton);
+        
         //postsItemImage
         let postsItemImage = document.createElement("div");
         postsItemImage.classList.add("posts__item__image");
@@ -83,22 +91,13 @@ async function createPost(){
     })
     
   }
+  
 }
-createPost();
+displayPosts();
 
 
 // addPost function
 async function addPost(e){
-    /*function readFileAsDataURL(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    });
-}*/
     e.preventDefault();
 
     // image post url
