@@ -6,7 +6,7 @@ let userInfo = [];
 let lastPostId = 0;
 
 //display posts from json server data
-async function displayPosts(postsData = null){
+async function displayPosts(){
   let postsElement = document.querySelector(".posts .row");
 
   //GET posts data
@@ -97,19 +97,27 @@ displayPosts();
 
 
 // addPost function
+// addPost function
 async function addPost(e){
     e.preventDefault();
 
     // image post url
-    const postFile = postImageFile.files;
-    console.log(postFile)
-    let imageUrl = null;
-    const reader = new FileReader();
-    reader.onload = function () {
+     const postFile = postImageFile.files;
+     console.log(postFile)
+     let imageUrl = null;
+     const reader = new FileReader();
+     reader.onload = function () {
             imageUrl = reader.result;
     }
-    reader.readAsDataURL(postFile);
-    
+    reader.readAsDataURL(postFile[0]);
+    // if (postFile.length > 0 && postFile[0] instanceof Blob) {
+    //     imageUrl = await new Promise((resolve, reject) => {
+    //         const reader = new FileReader();
+    //         reader.onload = () => resolve(reader.result);
+    //         reader.onerror = reject;
+    //         reader.readAsDataURL(postFile[0]);
+    //     });
+    // }
     //fetch user
     let userResponse = await fetch("http://localhost:3000/users");
     let userInfo = await userResponse.json();
@@ -132,5 +140,11 @@ async function addPost(e){
 
     const result = await response.json();
     console.log(result);
+    document.querySelector(".posts .row").innerHTML = "";
+    displayPosts();
+
+    postInput.value = "";
+    postImageFile.value = "";
 }
 postButton.addEventListener("click", addPost)
+
