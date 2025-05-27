@@ -12,6 +12,30 @@
 </head>
 <body>
 
+    <header class="header">
+        <div class="container">
+            <div class="header__wrapper">
+                <div class="header__logo">
+                    <i class="fa-solid fa-code"></i>
+                    <h4>Dark</h4>
+                </div>
+                <div class="header__user">
+                    <div class="header__user__info">
+                        <i class="fa-solid fa-user"></i>
+                        <p class="header__user__name"></p>
+                        <i class="fa-solid fa-caret-down"></i>
+                    </div>
+                    
+
+                    <div class="header__logout">
+                    <p>log out</p>
+                </div>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+
     <section class="post-form">
         <div class="container">
             <form>
@@ -26,27 +50,35 @@
     <section class="posts">
         <div class="container">
             <div class="row">
-                <!-- <div class="posts__item">
-                    <div class="posts__item__header">
-                        <div class="posts__item__header__publisher">
-                            <i class="fa-solid fa-user"></i>
-                            <h4>Aya Gamal</h4>
-                        </div>
-                        <i class="fa-solid fa-ellipsis"></i>
-                    </div>
-                    <p class="posts__item__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-                    <div class="posts__item__image">
-                        <img src="images/post1.jpg" alt="post1">
-                    </div>
-                    <div class="posts__item__bottom">
-                        <div class="like">
-                        <div class="comment">
-                </div> -->
 
                 
             </div>
         </div>
     </section>
+
+    <section class="chatbot">
+        <div class="container">
+            <div class="chatbot__icon">
+                <i class="fa-solid fa-robot"></i>
+            </div>
+            <div class="chatbot__wrapper hidden" >
+                <div class="chatbot__header">
+                    <span>ChatBot</span>
+                    <button class="chatbot__close">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </button>
+                </div>
+                <div class="chatbot__body">
+                    <div class="chatbot__body__messages"></div>
+                </div>
+                <div class="chatbot__input__wrapper">
+                    <input type="text" class="chatbot__input" placeholder="Type a message" />
+                    <button class="chatbot__send-btn">Send</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 
     <script src="js/all.min.js" data-auto-replace-svg="nest"></script>
     <script src="js/home.js"></script>

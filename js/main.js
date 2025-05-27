@@ -35,6 +35,8 @@ async function loginForm(e){
     console.log(users)
 
     if(users.length > 0){
+        localStorage.setItem("loggedInUser", JSON.stringify(users[0]));
+        console.log(JSON.parse(localStorage.getItem("loggedInUser")));
         window.location.href="home.html";
     } else {
         alert("invalid username or password");

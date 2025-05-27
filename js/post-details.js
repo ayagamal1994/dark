@@ -64,7 +64,6 @@ function loadingPost(){
 
         let postComments = document.createElement("div");
         postComments.classList.add("post-comments");
-        //postComments.textContent = `${postData.comments.map((comment)=>{comment})}`;
         postsItem.append(postComments);
 
         postData.comments.map((comment)=>{

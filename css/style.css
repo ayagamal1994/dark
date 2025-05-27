@@ -214,8 +214,68 @@ img {
 
 
   /* HOME */
+  .header {
+    width: 100%;
+    background-color: var(--background-color);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: fixed;
+    margin-bottom: 20px;
+    padding: 20px 0;
+    top:0;
+    z-index: 1000
+  }
+  .header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+  }
+  .header__logo {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  .header__logo i{
+    color: var(--main-color)
+  }
+  .header__logo h4 {
+    color: var(--text-color)
+  }
+  .header__user {
+    position: relative;
+  }
+  .header__logout {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1000;
+  }
+  .header__user__info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--main-color);
+    padding: 5px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: capitalize;
+  }
+  .header__user__info i {
+    color: var(--main-color)
+  }
+  .header__logout p {
+    cursor: pointer;
+    text-transform: capitalize;
+    width: 100%
+}
   .post-form {
-    margin-top: 20px
+    margin-top: 80px
   }
   .post-form form{
     background: linear-gradient(to left, var(--main-color), var(--second-color));
@@ -224,6 +284,10 @@ img {
     display: flex;
     flex-direction: column;
     
+  }
+  #post-image {
+    margin-top: -25px;
+    margin-left: 20px
   }
   .post-form__input {
     width: 100%;
@@ -320,18 +384,148 @@ img {
     margin-left: 10px;
     cursor: pointer
 }
+.posts__item__bottom .post-like i.liked {
+  color: var(--second-color)
+}
 .post-comments-number {
     cursor: pointer
 }
 .post-comments {
-    margin-top: 20px
+    margin-top: 20px;
+    cursor: pointer
 }
 .post-comments .comment {
     border-top: 1px solid var(--text-color);
-    padding: 10px 0
+    padding: 10px 0;
+    
 }
 /* posts details */
 
+
+/* chat bot */
+.chatbot__icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--second-color);
+  color: white;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.chatbot__icon:hover {
+  background-color: var(--main-color);
+  transform: scale(1.1);
+}
+
+.chatbot__wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  height: 450px;
+  background-color: #1f1f1f;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 5
+}
+
+.hidden {
+  display: none !important;
+}
+
+.chatbot__header {
+  background-color: var(--second-color);
+  color: white;
+  padding: 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+
+.chatbot__close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+.chatbot__body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.chatbot__body__messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  max-width: 85%;
+}
+
+.message.user {
+  background-color: var(--main-color);
+  color: white;
+  align-self: flex-end;
+}
+
+.message.bot {
+  background-color: #333;
+  color: white;
+  align-self: flex-start;
+}
+
+.chatbot__input__wrapper {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #444;
+  background-color: #2c2c2c;
+}
+
+.chatbot__input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 10px;
+  background-color: #333;
+  color: white;
+}
+
+.chatbot__send-btn {
+  margin-left: 10px;
+  padding: 10px 15px;
+  background-color: var(--second-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.chatbot__send:hover {
+  background-color: var(--main-color);
+}
 .one-post{
     margin: 50px 0;
 }

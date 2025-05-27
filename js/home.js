@@ -1,9 +1,38 @@
+let userElementHeader = document.querySelector(".header__user__info");
+let logoutMenu = document.querySelector(".header__logout");
+
+let userInfo = JSON.parse(localStorage.getItem("loggedInUser"));
+let userNameElement = document.querySelector(".header__user__name")
+let lastPostId = 0;
 let postButton = document.querySelector(".post-form__button");
 let postInput = document.querySelector(".post-form__input");
 let postImageFile = document.querySelector("#post-image");
+//chat bot
+let chatbotWrapper = document.querySelector(".chatbot__wrapper");
+let chatbotClostBtn = document.querySelector(".chatbot__close");
+let chatbotSendBtn = document.querySelector(".chatbot__send-btn");
+let chatbotInput = document.querySelector(".chatbot__input");
+let chatbotMessages = document.querySelector(".chatbot__messages");
+let chatbotIcon = document.querySelector(".chatbot__icon");
 
-let userInfo = [];
-let lastPostId = 0;
+//user name
+userNameElement.textContent = userInfo.username;
+
+// logout
+userElementHeader.addEventListener("click", () => {
+  logoutMenu.style.display = logoutMenu.style.display === "block" ? "none" : "block";
+});
+
+document.addEventListener("click", function(e) {
+  if (!userElementHeader.contains(e.target)) {
+    logoutMenu.style.display = "none";
+  }
+});
+
+logoutMenu.addEventListener("click", () => {
+  localStorage.removeItem("loggedInUser");
+   window.location.href = "index.html";
+})
 
 //display posts from json server data
 async function displayPosts(){
@@ -82,12 +111,65 @@ async function displayPosts(){
 
         let postLikeIcon = document.createElement("i");
         postLikeIcon.classList.add("fa-solid", "fa-thumbs-up");
-        postLike.append(postLikeIcon);
+        
+        //likes local storage
+        let likedPosts = JSON.parse(localStorage.getItem('likedPosts')) || [];
+        let isLiked = likedPosts.includes(post.id);
+
+        function updateLike() {
+          postLike.textContent = isLiked ? post.likes + 1 : post.likes;
+          postLike.append(postLikeIcon);
+          if (isLiked) {
+            postLikeIcon.classList.add('liked'); // optional class for styling
+          } else {
+            postLikeIcon.classList.remove('liked');
+          }
+        }
+
+        updateLike();
+
+        postLikeIcon.addEventListener('click', () => {
+          if (isLiked) {
+            //remove like
+            likedPosts = likedPosts.filter(id => id !== post.id);
+            isLiked = false;
+          } else {
+            // add like
+            likedPosts.push(post.id);
+            isLiked = true;
+          }
+          localStorage.setItem('likedPosts', JSON.stringify(likedPosts));
+          updateLike();
+        });
+
+
+        
+        let postCommentsNumber = document.createElement("div");
+        postCommentsNumber.classList.add("post-comments-number");
+        postCommentsNumber.textContent = `${post.comments.length} comments`;
+        postsItemBottom.append(postCommentsNumber)
 
         let postComments = document.createElement("div");
         postComments.classList.add("post-comments");
-        postComments.textContent = `${post.comments.length} comments`;
-        postsItemBottom.append(postComments)
+        postsItem.append(postComments);
+
+        post.comments.map((comment)=>{
+            let postComment = document.createElement("p");
+            postComment.classList.add("comment");
+            postComment.textContent=`${comment}`;
+            postComments.append(postComment)
+        });
+
+        postComments.style.display = "none";
+
+        //display comments
+        postCommentsNumber.addEventListener("click", ()=>{
+          if (postComments.style.display === 'none') {
+            postComments.style.display = 'block';
+          } else {
+            postComments.style.display = 'none';
+          }
+        })
     })
     
   }
@@ -118,6 +200,7 @@ async function addPost(e){
     //         reader.readAsDataURL(postFile[0]);
     //     });
     // }
+    
     //fetch user
     let userResponse = await fetch("http://localhost:3000/users");
     let userInfo = await userResponse.json();
@@ -148,3 +231,73 @@ async function addPost(e){
 }
 postButton.addEventListener("click", addPost)
 
+
+//chat bot
+chatbotIcon.addEventListener("click", () => {
+    chatbotWrapper.classList.remove("hidden");
+    chatbotIcon.style.display = "none";
+  });
+  chatbotClostBtn.addEventListener("click", () => {
+    chatbotWrapper.classList.add("hidden");
+    chatbotIcon.style.display = "flex";
+  });
+
+  chatbotSendBtn.addEventListener("click", chatbotSendMessage);
+
+  chatbotInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") chatbotSendMessage();
+  });
+
+function chatbotSendMessage() {
+  let chatbotUserMessage = document.querySelector(".chatbot__input").value.trim();
+  if (chatbotUserMessage) {
+    chatbotAppendMessage("user", chatbotUserMessage);
+    document.querySelector(".chatbot__input").value.trim();
+    document.querySelector(".chatbot__input").value=""
+    getBotResponse(chatbotUserMessage);
+
+  }
+}
+
+function chatbotAppendMessage(sender, message) {
+  let messageWrapper = document.querySelector(".chatbot__body__messages");
+  let messageElement = document.createElement("div");
+  messageElement.classList.add("message", sender);
+  messageElement.textContent = message;
+  messageWrapper.append(messageElement);
+  messageWrapper.scrollTop = messageWrapper.scrollHeight;
+}
+
+async function getBotResponse(userMessage) {
+  const API_KEY = "AIzaSyB-GIbcZW_oOHN9LdNrNyax2Qa__kGwx0Q";
+  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [{ text: userMessage }],
+          },
+        ],
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!data.candidates || !data.candidates.length) {
+      throw new Error("No response from Gemini API");
+    }
+
+    const botMessage = data.candidates[0].content.parts[0].text;
+    chatbotAppendMessage("bot", botMessage);
+  } catch (error) {
+    console.error("Error:", error);
+    chatbotAppendMessage(
+      "bot",
+      "Sorry, I'm having trouble responding. Please try again."
+    );
+  }
+}
