@@ -30,7 +30,7 @@ async function loginForm(e){
     let usernameInput = document.querySelector(".user-name").value;
     let passwordInput = document.querySelector(".password").value;
 
-    let response = await fetch(`http://localhost:3000/users?username=${usernameInput}&password=${passwordInput}`);
+    let response = await fetch(`https://notch-acidic-skiff.glitch.me/users?username=${usernameInput}&password=${passwordInput}`);
     let users = await response.json();
     console.log(users)
 

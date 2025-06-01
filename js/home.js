@@ -7,6 +7,12 @@ let lastPostId = 0;
 let postButton = document.querySelector(".post-form__button");
 let postInput = document.querySelector(".post-form__input");
 let postImageFile = document.querySelector("#post-image");
+let currentEditingPostId = null;
+let currentEditingPostTextElement = null;
+let saveEditPost = document.querySelector(".save-post");
+let editPostTextarea = document.querySelector(".edit-post-textarea");
+let editPostElement = document.querySelector(".edit-post");
+let closeEditPost = document.querySelector(".edit-close-icon");
 //chat bot
 let chatbotWrapper = document.querySelector(".chatbot__wrapper");
 let chatbotClostBtn = document.querySelector(".chatbot__close");
@@ -37,9 +43,10 @@ logoutMenu.addEventListener("click", () => {
 //display posts from json server data
 async function displayPosts(){
   let postsElement = document.querySelector(".posts .row");
+  
 
   //GET posts data
-  let response = await fetch(`http://localhost:3000/posts`);
+  let response = await fetch(`https://notch-acidic-skiff.glitch.me/posts`);
   let posts = await response.json();
   console.log(posts);
   lastPostId = posts.length;
@@ -68,9 +75,24 @@ async function displayPosts(){
         publisherName.textContent = `${post.publisher}`;
         postsItemHeaderPublisher.append(publisherName);
 
-        let ellipsisIcon = document.createElement("i");
-        ellipsisIcon.classList.add("fa-solid", "fa-ellipsis");
-        postsItemHeader.append(ellipsisIcon);
+        //edit post
+        let editIcon = document.createElement("i");
+        editIcon.classList.add("fa-solid", "fa-pen-to-square", "edit-icon");
+        postsItemHeader.append(editIcon);
+
+        editIcon.addEventListener("click", function(){
+          currentEditingPostId = `${post.id}`;
+          currentEditingPostTextElement = postsItemText;
+          editPostElement.style.display = "block";
+          editPostTextarea.value = `${post.post}`;
+
+
+        })
+        closeEditPost.addEventListener("click", function(){
+          editPostElement.style.display = "none";
+        })
+        
+        
 
         //postsItemText
         let postsItemText = document.createElement("p");
@@ -177,6 +199,36 @@ async function displayPosts(){
 }
 displayPosts();
 
+saveEditPost.addEventListener("click", async function(){
+  if  (currentEditingPostId === null || !currentEditingPostTextElement) return;
+          let updatedPostContent = editPostTextarea.value.trim();
+          try {
+            const response = await fetch(`https://notch-acidic-skiff.glitch.me/posts/${currentEditingPostId}`, {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ post: updatedPostContent }),
+            });
+
+            if (!response.ok) throw new Error("Failed to update post");
+
+           currentEditingPostTextElement.textContent =
+            updatedPostContent.length > 250
+            ? updatedPostContent.slice(0, 250) + "..."
+            : updatedPostContent;
+
+          document.querySelector(".posts .row").innerHTML = "";
+          displayPosts();
+          editPostElement.style.display = "none";
+          currentEditingPostId = null;
+          currentEditingPostTextElement = null;
+
+
+          } catch (error) {
+            alert("Error updating post: " + error.message);
+          }
+        });
 
 // addPost function
 // addPost function
@@ -186,33 +238,31 @@ async function addPost(e){
     // image post url
      const postFile = postImageFile.files;
      console.log(postFile)
-     let imageUrl = null;
-     const reader = new FileReader();
-     reader.onload = function () {
-            imageUrl = reader.result;
-    }
-    reader.readAsDataURL(postFile[0]);
-    // if (postFile.length > 0 && postFile[0] instanceof Blob) {
-    //     imageUrl = await new Promise((resolve, reject) => {
-    //         const reader = new FileReader();
-    //         reader.onload = () => resolve(reader.result);
-    //         reader.onerror = reject;
-    //         reader.readAsDataURL(postFile[0]);
-    //     });
+     let imageUrl = "";
+    //  const reader = new FileReader();
+    //  reader.onload = function () {
+    //         imageUrl = reader.result;
     // }
+    //reader.readAsDataURL(postFile[0]);
+    if (postFile.length > 0 && postFile[0] instanceof Blob) {
+        imageUrl = await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(postFile[0]);
+        });
+    }
     
-    //fetch user
-    let userResponse = await fetch("http://localhost:3000/users");
-    let userInfo = await userResponse.json();
-    console.log(userInfo)
-    let userPublisher = userInfo[0].username;
 
     //fetch posts
-    let response = await fetch("http://localhost:3000/posts", {
+    let response = await fetch("https://notch-acidic-skiff.glitch.me/posts", {
         "method": "POST",
+        "headers": {
+          "Content-Type": "application/json"
+        },
         "body":JSON.stringify({
-            "id": ++lastPostId,
-            "publisher": userPublisher,
+            //"id": ++lastPostId,
+            "publisher": userInfo.username,
             "post": postInput.value,
             "image": imageUrl,
             "likes": 0,

@@ -399,6 +399,62 @@ img {
     padding: 10px 0;
     
 }
+.edit-icon {
+  cursor: pointer
+}
+
+.edit-post {
+  
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  z-index: 10;
+  background-color: var(--main-color);
+  border-radius: 10px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: none;
+}
+.edit-post .edit-close-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: var(--second-color);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.edit-post textarea {
+  min-height: 300px;
+  height: fit-content;
+  width: 100%;
+  margin-top: 40px;
+  border-radius: 10px;
+  border: none;
+  padding: 20px
+}
+.edit-post textarea:focus {
+  outline: none
+}
+.edit-post button {
+  background-color: var(--second-color);
+  border: none;
+  color: #fff;
+  padding: 5px 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 /* posts details */
 
 
