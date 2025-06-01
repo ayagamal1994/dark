@@ -142,7 +142,7 @@ async function displayPosts(){
           postLike.textContent = isLiked ? post.likes + 1 : post.likes;
           postLike.append(postLikeIcon);
           if (isLiked) {
-            postLikeIcon.classList.add('liked'); // optional class for styling
+            postLikeIcon.classList.add('liked');
           } else {
             postLikeIcon.classList.remove('liked');
           }
@@ -231,7 +231,6 @@ saveEditPost.addEventListener("click", async function(){
         });
 
 // addPost function
-// addPost function
 async function addPost(e){
     e.preventDefault();
 
@@ -239,11 +238,7 @@ async function addPost(e){
      const postFile = postImageFile.files;
      console.log(postFile)
      let imageUrl = "";
-    //  const reader = new FileReader();
-    //  reader.onload = function () {
-    //         imageUrl = reader.result;
-    // }
-    //reader.readAsDataURL(postFile[0]);
+
     if (postFile.length > 0 && postFile[0] instanceof Blob) {
         imageUrl = await new Promise((resolve, reject) => {
             const reader = new FileReader();
